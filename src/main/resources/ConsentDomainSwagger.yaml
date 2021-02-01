@@ -1,0 +1,122 @@
+openapi: 3.0.0
+info:
+  description: "Consent Domain"
+  version: "1.6.2"
+  title: "Consent Domain"
+servers:
+  - url: http://localhost:8080/consent-domain/
+
+paths:
+  /v1/account-consents/{consentId}:
+    get:
+      tags:
+        - "Consent"
+      summary: "Get consents by consentId"
+      operationId: "getConsentsByConsentId"
+      parameters:
+        - in: path
+          name: consentId
+          schema:
+            type: string
+          description: Id of consent
+          required: true
+      responses:
+        "200":
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ConsentResponse"
+
+    delete:
+      tags:
+        - "Consent"
+      summary: "Delete consent by consentId"
+      operationId: "deleteConsentsByConsentId"
+      parameters:
+        - in: path
+          name: consentId
+          schema:
+            type: string
+          description: Id of consent
+          required: true
+      responses:
+        "204":
+          description: "successful operation"
+
+
+  /v1/account-consents:
+    post:
+      tags:
+        - "Consent"
+      summary: "Create or update consent"
+      operationId: "postAccountConsent"
+      requestBody:
+        description: Create or update consent
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ConsentRequest"
+      responses:
+        "201":
+          description: "successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ConsentResponse"
+
+
+
+components:
+  schemas:
+
+    ConsentRequest:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/ConsentRequestData"
+
+    ConsentRequestData:
+      type: object
+      properties:
+        permissions:
+          type: array
+          items:
+            type: string
+        expirationDate:
+          type: string
+
+    ConsentResponse:
+      type: object
+      properties:
+        data:
+          $ref: "#/components/schemas/ConsentResponseData"
+        links:
+          $ref: "#/components/schemas/Links"
+
+    ConsentResponseData:
+      type: object
+      properties:
+        consentId:
+          type: string
+        creationDate:
+          type: string
+        status:
+          type: string
+        statusUpdateDate:
+          type: string
+        permissions:
+          type: array
+          items:
+            type: string
+        expirationDate:
+          type: string
+
+    Links:
+      type: object
+      properties:
+        self:
+          type: string

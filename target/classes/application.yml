@@ -1,0 +1,48 @@
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  profile: ms-dev
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: root
+    password: root
+  flyway:
+    url: jdbc:h2:mem:testdb
+    user: root
+    password: root
+    baselineOnMigrate: true
+    locations: classpath:db/migration
+    enabled: true
+jpa:
+  generate-ddl: true
+  ddl-auto: true
+  database: mysql
+  properties:
+    hibernate.format_sql: true
+  show-sql: true
+server:
+  port: 8087
+  serlvet:
+    contextPath: /consent-domain
+
+#keycloak:
+#  auth-server-url: http://host.docker.internal:8080/auth
+#  realm: SpringBootKeycloak
+#  resource: account-domain
+#  credentials:
+#    secret: b4e48bd4-e67f-4e1c-9334-da1ca7695888
+#  bearer-only: true
+#  public-client: true
+#  security-constraints:
+#    - auth-roles:
+#      - user
+##      security-collections:
+##      - name:
+##        patterns:
+##          - /*
+##          - /v1/*
+#logging:
+#  level:
+#    org.keycloak: TRACE
