@@ -13,24 +13,15 @@ import java.util.Objects;
  * ConsentRequest
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2021-02-01T03:13:57.351Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2021-02-02T03:56:18.909Z[GMT]")
 
 
 public class ConsentRequest   {
   @JsonProperty("data")
-  @Valid
-  private List<ConsentRequestData> data = null;
+  private ConsentRequestData data = null;
 
-  public ConsentRequest data(List<ConsentRequestData> data) {
+  public ConsentRequest data(ConsentRequestData data) {
     this.data = data;
-    return this;
-  }
-
-  public ConsentRequest addDataItem(ConsentRequestData dataItem) {
-    if (this.data == null) {
-      this.data = new ArrayList<ConsentRequestData>();
-    }
-    this.data.add(dataItem);
     return this;
   }
 
@@ -39,18 +30,19 @@ public class ConsentRequest   {
    * @return data
    **/
   @Schema(description = "")
-      @Valid
-    public List<ConsentRequestData> getData() {
+
+  @Valid
+  public ConsentRequestData getData() {
     return data;
   }
 
-  public void setData(List<ConsentRequestData> data) {
+  public void setData(ConsentRequestData data) {
     this.data = data;
   }
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -70,7 +62,7 @@ public class ConsentRequest   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ConsentRequest {\n");
-    
+
     sb.append("    data: ").append(toIndentedString(data)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -80,7 +72,7 @@ public class ConsentRequest   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

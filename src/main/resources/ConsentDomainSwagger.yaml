@@ -75,9 +75,7 @@ components:
       type: object
       properties:
         data:
-          type: array
-          items:
-            $ref: "#/components/schemas/ConsentRequestData"
+          $ref: "#/components/schemas/ConsentRequestData"
 
     ConsentRequestData:
       type: object
