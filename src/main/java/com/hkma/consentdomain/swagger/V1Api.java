@@ -7,6 +7,7 @@ package com.hkma.consentdomain.swagger;
 
 import com.hkma.consentdomain.swagger.model.ConsentRequest;
 import com.hkma.consentdomain.swagger.model.ConsentResponse;
+import com.hkma.consentdomain.swagger.model.UpdateConsentRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -50,6 +51,14 @@ public interface V1Api {
             consumes = { "application/json" },
             method = RequestMethod.POST)
     ResponseEntity<ConsentResponse> postAccountConsent(@Parameter(in = ParameterIn.DEFAULT, description = "Create or update consent", required=true, schema=@Schema()) @Valid @RequestBody ConsentRequest body);
+
+    @Operation(summary = "Update consent by consentId", description = "", tags={ "Consent" })
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "successful operation") })
+    @RequestMapping(value = "/v1/account-consents/{consentId}",
+            consumes = { "application/json" },
+            method = RequestMethod.POST)
+    ResponseEntity<Void> updateConsentsByConsentId(@Parameter(in = ParameterIn.PATH, description = "Id of consent", required=true, schema=@Schema()) @PathVariable("consentId") String consentId, @Parameter(in = ParameterIn.DEFAULT, description = "Create or update consent", required=true, schema=@Schema()) @Valid @RequestBody UpdateConsentRequest body);
 
 }
 

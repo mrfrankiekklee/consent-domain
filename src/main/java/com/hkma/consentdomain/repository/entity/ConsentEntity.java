@@ -29,6 +29,9 @@ public class ConsentEntity implements Serializable {
     @Column(name = "expiration_date")
     private String expirationDate;
 
+    @Column(name = "deletion_date")
+    private String deletionDate;
+
     public String getRecordId() {
         return recordId;
     }
@@ -75,5 +78,13 @@ public class ConsentEntity implements Serializable {
 
     public void setExpirationDate(String expirationDate) {
         this.expirationDate = expirationDate;
+    }
+
+    public String getDeletionDate() {
+        return deletionDate;
+    }
+
+    public void setDeletionDate(String deletionDate) {
+        this.deletionDate = deletionDate;
     }
 }

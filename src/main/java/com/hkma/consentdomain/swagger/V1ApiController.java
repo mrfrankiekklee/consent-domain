@@ -5,6 +5,7 @@ import com.hkma.consentdomain.bizsvc.ConsentBizsvcImpl;
 import com.hkma.consentdomain.swagger.model.ConsentRequest;
 import com.hkma.consentdomain.swagger.model.ConsentResponse;
 import com.hkma.consentdomain.swagger.model.ConsentResponseData;
+import com.hkma.consentdomain.swagger.model.UpdateConsentRequest;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -60,6 +61,11 @@ public class V1ApiController implements V1Api {
         ConsentResponse consentResponse = new ConsentResponse();
         consentResponse.setData(consentResponseData);
         return new ResponseEntity<ConsentResponse>(consentResponse, HttpStatus.OK);
+    }
+
+    public ResponseEntity<Void> updateConsentsByConsentId(@Parameter(in = ParameterIn.PATH, description = "Id of consent", required=true, schema=@Schema()) @PathVariable("consentId") String consentId,@Parameter(in = ParameterIn.DEFAULT, description = "Create or update consent", required=true, schema=@Schema()) @Valid @RequestBody UpdateConsentRequest body) {
+        consentBizsvcImpl.updateConsent(consentId, body);
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
 }

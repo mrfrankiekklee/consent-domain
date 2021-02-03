@@ -4,7 +4,8 @@ CREATE TABLE IF NOT EXISTS consent (
     status varchar(255) NOT NULL,
     status_update_date varchar(255) NOT NULL,
     permissions varchar(255) NOT NUll,
-    expirationDate varchar(255) NOT NUll,
+    expiration_date varchar(255) NOT NUll,
+    deletion_date varchar(255) NULL,
     PRIMARY KEY (record_id)
 );
 

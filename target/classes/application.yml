@@ -27,22 +27,21 @@ server:
   serlvet:
     contextPath: /consent-domain
 
-#keycloak:
-#  auth-server-url: http://host.docker.internal:8080/auth
-#  realm: SpringBootKeycloak
-#  resource: account-domain
-#  credentials:
-#    secret: b4e48bd4-e67f-4e1c-9334-da1ca7695888
-#  bearer-only: true
-#  public-client: true
-#  security-constraints:
-#    - auth-roles:
-#      - user
-##      security-collections:
-##      - name:
-##        patterns:
-##          - /*
-##          - /v1/*
-#logging:
-#  level:
-#    org.keycloak: TRACE
+keycloak:
+  auth-server-url: http://host.docker.internal:8080/auth
+  realm: SpringBootKeycloak
+  resource: account-domain
+  credentials:
+    secret: b4e48bd4-e67f-4e1c-9334-da1ca7695888
+  bearer-only: true
+  public-client: true
+  security-constraints:
+    - auth-roles:
+      - user
+      security-collections:
+      - name:
+        patterns:
+          - /v1/*
+logging:
+  level:
+    org.keycloak: TRACE
